@@ -3,7 +3,7 @@ import argparse
 from secondary_functions import getting_page
 
 
-def fetch_spacex_launch(launch_id):
+def fetch_spacex_launch(launch_id='latest'):
     url_spacex = f'https://api.spacexdata.com/v5/launches/{launch_id}'
     response = requests.get(url_spacex)
     response.raise_for_status()

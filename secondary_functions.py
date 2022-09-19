@@ -15,5 +15,3 @@ def getting_page(url, file_name, playload={}, folder_name='images'):
     response.raise_for_status()
     with open(f'{folder_name}/{file_name}{file_extension(url)}', 'wb') as file:
         file.write(response.content)
-
-

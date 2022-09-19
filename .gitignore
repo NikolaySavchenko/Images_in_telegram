@@ -4,3 +4,4 @@ images/
 .env
 .idea/
 venv/
+bot_token.txt
