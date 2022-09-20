@@ -2,6 +2,7 @@ import requests
 from secondary_functions import getting_page
 from dotenv import load_dotenv
 import os
+import argparse
 from datetime import datetime
 
 
@@ -30,5 +31,8 @@ def fetch_EPIC_images():
 
 if __name__ == '__main__':
     load_dotenv()
-    fetch_nasa_images(10)
+    parser = argparse.ArgumentParser('Input images count')
+    parser.add_argument('count', nargs='?', default=10)
+    images_count = parser.parse_args().count
+    fetch_nasa_images(images_count)
     fetch_EPIC_images()

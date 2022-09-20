@@ -2,6 +2,7 @@ import telegram
 from dotenv import load_dotenv
 from random import shuffle
 from time import sleep
+import argparse
 import os
 
 
@@ -18,4 +19,7 @@ def reporter_bot(delay_time_sec=14400):
 
 if __name__ == '__main__':
     load_dotenv()
-    reporter_bot()
+    parser = argparse.ArgumentParser('Input delay time sec')
+    parser.add_argument('delay', nargs='?', default=14400)
+    delay_time = parser.parse_args().delay
+    reporter_bot(delay_time)
