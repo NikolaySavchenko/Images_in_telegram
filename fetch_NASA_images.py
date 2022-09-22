@@ -6,9 +6,9 @@ import argparse
 from datetime import datetime
 
 
-def fetch_nasa_images(count_img=10):
+def fetch_nasa_images(nasa_token, count_img=10):
     nasa_dayfoto_url = 'https://api.nasa.gov/planetary/apod'
-    playload = {'api_key': os.getenv('NASA_TOKEN'), 'count': count_img}
+    playload = {'api_key': nasa_token, 'count': count_img}
     response = requests.get(nasa_dayfoto_url, params=playload)
     response.raise_for_status()
     links = response.json()
@@ -16,9 +16,9 @@ def fetch_nasa_images(count_img=10):
         getting_page(link['url'], f'nasa{pictere_number}')
 
 
-def fetch_EPIC_images():
+def fetch_EPIC_images(nasa_token):
     EPIC_url = 'https://api.nasa.gov/EPIC/api/natural'
-    playload = {'api_key': os.getenv('NASA_TOKEN')}
+    playload = {'api_key': nasa_token}
     response = requests.get(EPIC_url, params=playload)
     response.raise_for_status()
     links = response.json()
@@ -34,5 +34,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser('Input images count')
     parser.add_argument('count', nargs='?', default=10)
     images_count = parser.parse_args().count
-    fetch_nasa_images(images_count)
-    fetch_EPIC_images()
+    nasa_token = os.environ['NASA_TOKEN']
+    fetch_nasa_images(nasa_token, images_count)
+    fetch_EPIC_images(nasa_token)
