@@ -16,13 +16,16 @@ Also you need TOKEN for your [Bot in telegram](https://way23.ru/%D1%80%D0%B5%D0%
 You should use environment variables. Create file name `.env` and variables `NASA_TOKEN` and `BOT_TOKEN` in the root directory.
 In file `.env` only two line:
 
-    NASA_TOKEN = 'here is your own TOKEN'
-    BOT_TOKEN = 'here is your own TOKEN'
-
+```
+NASA_TOKEN='here is your own TOKEN'
+BOT_TOKEN='here is your own TOKEN'
+```
 
 Example for command line:
 
-    $ python '\Images_in_telegram\main.py' 3600
+```
+$ python '\Images_in_telegram\main.py' 3600
+```
 
 Where `3600` - time in seconds between publications. The default time is 4 hours.
 
