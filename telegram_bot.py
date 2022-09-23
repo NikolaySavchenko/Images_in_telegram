@@ -2,6 +2,7 @@ import telegram
 from dotenv import load_dotenv
 from random import shuffle
 from time import sleep
+from pathlib import Path
 import argparse
 import os
 
@@ -13,7 +14,7 @@ def reporter_bot(bot_token, delay_time_sec=14400, chat_id='@space_view'):
         for images_list in images:
             shuffle(images_list[2])
             for image in images_list[2]:
-                space_view_bot.send_photo(chat_id=chat_id, photo=open(f'images/{image}', 'rb'))
+                space_view_bot.send_photo(chat_id=chat_id, photo=open(Path(f'images/{image}'), 'rb'))
                 sleep(delay_time_sec)
 
 
