@@ -8,7 +8,7 @@ import os
 
 def reporter_bot(bot_token, delay_time_sec=14400, chat_id='@space_view'):
     space_view_bot = telegram.Bot(token=bot_token)
-    images = os.walk('images/')
+    images = os.walk('images')
     while True:
         for images_list in images:
             shuffle(images_list[2])
