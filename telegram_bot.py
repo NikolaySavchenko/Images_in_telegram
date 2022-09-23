@@ -15,13 +15,23 @@ def reporter_bot(bot_token, delay_time_sec=14400, chat_id='@space_view'):
             shuffle(images_list[2])
             for image in images_list[2]:
                 with open(Path(f'images/{image}'), 'rb') as file:
-                    space_view_bot.send_photo(chat_id=chat_id, photo=file)
+                    try:
+                        space_view_bot.send_photo(chat_id=chat_id, photo=file)
+                    except telegram.error.NetworkError:
+                        print('NetworkError, Resend after 10 seconds')
+                        sleep(10)
+                        try:
+                            space_view_bot.send_photo(chat_id=chat_id, photo=file)
+                        except telegram.error.NetworkError:
+                            print('NetworkError, Resend after 2 min')
+                            sleep(120)
+                            continue
                 sleep(delay_time_sec)
 
 
 if __name__ == '__main__':
     load_dotenv()
-    bot_token = os.environ['BOT_TOKEN']
+    bot_token = os.environ['TG_BOT_TOKEN']
     parser = argparse.ArgumentParser('Input delay time sec, chat ID')
     parser.add_argument('delay', nargs='?', default=14400)
     parser.add_argument('chat_id', nargs='?', default='@space_view')
