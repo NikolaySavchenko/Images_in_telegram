@@ -8,8 +8,8 @@ from datetime import datetime
 
 def fetch_nasa_images(nasa_token, images_count=10):
     nasa_dayfoto_url = 'https://api.nasa.gov/planetary/apod'
-    playload = {'api_key': nasa_token, 'count': images_count}
-    response = requests.get(nasa_dayfoto_url, params=playload)
+    payload = {'api_key': nasa_token, 'count': images_count}
+    response = requests.get(nasa_dayfoto_url, params=payload)
     response.raise_for_status()
     links = response.json()
     for pictere_number, link in enumerate(links):
@@ -18,8 +18,8 @@ def fetch_nasa_images(nasa_token, images_count=10):
 
 def fetch_EPIC_images(nasa_token):
     EPIC_url = 'https://api.nasa.gov/EPIC/api/natural'
-    playload = {'api_key': nasa_token}
-    response = requests.get(EPIC_url, params=playload)
+    payload = {'api_key': nasa_token}
+    response = requests.get(EPIC_url, params=payload)
     response.raise_for_status()
     links = response.json()
     for picture_number, link in enumerate(links):
