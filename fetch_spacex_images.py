@@ -4,12 +4,12 @@ from secondary_functions import getting_page
 
 
 def fetch_spacex_launch(launch_id='latest'):
-    url_spacex = f'https://api.spacexdata.com/v5/launches/{launch_id}'
-    response = requests.get(url_spacex)
+    spacex_url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
+    response = requests.get(spacex_url)
     response.raise_for_status()
     links = response.json()["links"]["flickr"]["original"]
-    for pictere_number, link in enumerate(links):
-        getting_page(link, f'spacex{pictere_number}')
+    for picture_number, link in enumerate(links):
+        getting_page(link, f'spacex{picture_number}')
 
 
 if __name__ == '__main__':
