@@ -23,13 +23,12 @@ TG_BOT_TOKEN='here is your own TOKEN'
 
 Example for command line:
 
-```
-$ python '\Images_in_telegram\main.py' 3600 123456789
-```
+    $ python '\Images_in_telegram\telegram_bot.py' chat_id 3600
 
-Where `3600` - time in seconds between publications. The default time is 4 hours.
+Where `chat_id` - ID in telegram chat where Bot will send images. It's required argument
 
-And `'123456789'`- ID chat in telegram, where images will be send. Default it's `'@space_view'`.
+`3600` - time in seconds between publications. The default time is 4 hours.
+
 
 ## Also you may use individual scripts:
 
@@ -46,16 +45,6 @@ Where `launch_id` - ID specific launch. The default ID latest launch.
     $ python '\Images_in_telegram\fetch_NASA_images.py' count
 
 Where `count` - count foto for fetch. The default count 10.
-
-`telegram_bot.py` public images in telegram channel. 
-
-Example for command line:
-
-    $ python '\Images_in_telegram\telegram_bot.py' 3600 chat_id
-
-Where `3600` - time in seconds between publications. The default time is 4 hours.
-
-`chat_id` - ID in telegram chat where Bot will send images. The default ID `@space_view`
 
 
 ## Project Goals
