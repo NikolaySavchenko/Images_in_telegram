@@ -24,7 +24,7 @@ def walking_for_files(folder_adress):
     for file_list in files:
         return file_list[2]
 
-def retrying_bot_action(bot_name, chat_id, file, Error_sleep=10, delay_time_sec):
+def retrying_bot_action(bot_name, chat_id, file, delay_time_sec, Error_sleep=10):
     try:
         bot_name.send_photo(chat_id=chat_id, photo=file)
         sleep(delay_time_sec)
