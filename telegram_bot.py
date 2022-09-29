@@ -4,6 +4,7 @@ from random import shuffle
 from pathlib import Path
 import argparse
 import os
+from time import sleep
 from secondary_functions import walking_for_files
 from secondary_functions import retrying_bot_action
 
@@ -15,8 +16,8 @@ def reporter_bot(bot_token, chat_id, delay_time_sec=14400):
         shuffle(images_list)
         for image in images_list:
             with open(Path(f'images/{image}'), 'rb') as file:
-                retrying_bot_action(space_view_bot, chat_id, file, delay_time_sec)
-
+                retrying_bot_action(space_view_bot, chat_id, file)
+            sleep(delay_time_sec)
 
 if __name__ == '__main__':
     load_dotenv()
