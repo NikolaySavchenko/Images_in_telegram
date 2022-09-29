@@ -5,18 +5,18 @@ from pathlib import Path
 import argparse
 import os
 from time import sleep
-from secondary_functions import walking_for_files
-from secondary_functions import retrying_bot_action
+from secondary_functions import walk_for_files
+from secondary_functions import retry_bot_action
 
 
-def reporter_bot(bot_token, chat_id, delay_time_sec=14400):
+def post_bot(bot_token, chat_id, delay_time_sec=14400):
     space_view_bot = telegram.Bot(token=bot_token)
     while True:
-        images_list = walking_for_files('images')
+        images_list = walk_for_files('images')
         shuffle(images_list)
         for image in images_list:
             with open(Path(f'images/{image}'), 'rb') as file:
-                retrying_bot_action(space_view_bot, chat_id, file)
+                retry_bot_action(space_view_bot, chat_id, file)
             sleep(delay_time_sec)
 
 if __name__ == '__main__':
@@ -27,4 +27,4 @@ if __name__ == '__main__':
     parser.add_argument('delay', nargs='?', default=14400)
     delay_time = int(parser.parse_args().delay)
     chat_id = parser.parse_args().chat_id
-    reporter_bot(bot_token, chat_id, delay_time)
+    post_bot(bot_token, chat_id, delay_time)

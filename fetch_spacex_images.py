@@ -1,6 +1,6 @@
 import requests
 import argparse
-from secondary_functions import getting_page
+from secondary_functions import get_image
 
 
 def fetch_spacex_launch(launch_id='latest'):
@@ -9,7 +9,7 @@ def fetch_spacex_launch(launch_id='latest'):
     response.raise_for_status()
     links = response.json()["links"]["flickr"]["original"]
     for number, link in enumerate(links):
-        getting_page(link, f'spacex{number}')
+        get_image(link, f'spacex{number}')
 
 
 if __name__ == '__main__':

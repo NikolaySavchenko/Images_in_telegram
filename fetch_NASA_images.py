@@ -1,5 +1,5 @@
 import requests
-from secondary_functions import getting_page
+from secondary_functions import get_image
 from dotenv import load_dotenv
 import os
 import argparse
@@ -13,7 +13,7 @@ def fetch_nasa_images(nasa_token, images_count=10):
     response.raise_for_status()
     links = response.json()
     for number, link in enumerate(links):
-        getting_page(link['url'], f'nasa{number}')
+        get_image(link['url'], f'nasa{number}')
 
 
 def fetch_EPIC_images(nasa_token):
@@ -26,7 +26,7 @@ def fetch_EPIC_images(nasa_token):
         date_link = datetime.strptime(link['date'],
                                       "%Y-%m-%d %H:%M:%S").strftime("%Y/%m/%d")
         earth_url = f'https://api.nasa.gov/EPIC/archive/natural/{date_link}/png/{link["image"]}.png'
-        getting_page(earth_url, f'EPIC{number}', payload)
+        get_image(earth_url, f'EPIC{number}', payload)
 
 
 if __name__ == '__main__':
