@@ -6,9 +6,9 @@ import argparse
 from datetime import datetime
 
 
-def fetch_nasa_images(nasa_token, images_count=10):
+def fetch_nasa_images(nasa_token, count=10):
     url = 'https://api.nasa.gov/planetary/apod'
-    payload = {'api_key': nasa_token, 'count': images_count}
+    payload = {'api_key': nasa_token, 'count': count}
     response = requests.get(url, params=payload)
     response.raise_for_status()
     links = response.json()

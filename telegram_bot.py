@@ -9,14 +9,14 @@ from secondary_functions import walk_for_files
 from secondary_functions import retry_bot_action
 
 
-def post_bot(bot_token, chat_id, delay_time_sec=14400):
-    space_view_bot = telegram.Bot(token=bot_token)
+def post_bot(token, chat_id, delay_time_sec=14400):
+    tele_bot = telegram.Bot(token=token)
     while True:
-        images_list = walk_for_files('images')
-        shuffle(images_list)
-        for image in images_list:
+        images_collection = walk_for_files('images')
+        shuffle(images_collection)
+        for image in images_collection:
             with open(Path(f'images/{image}'), 'rb') as file:
-                retry_bot_action(space_view_bot, chat_id, file)
+                retry_bot_action(tele_bot, chat_id, file)
             sleep(delay_time_sec)
 
 if __name__ == '__main__':

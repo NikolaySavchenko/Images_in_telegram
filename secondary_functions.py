@@ -25,5 +25,5 @@ def walk_for_files(folder_adress):
 
 
 @retry(delay=10, max_delay=20)
-def retry_bot_action(bot_name, chat_id, file):
-    bot_name.send_photo(chat_id=chat_id, photo=file)
+def retry_bot_action(bot, chat_id, file):
+    bot.send_photo(chat_id=chat_id, photo=file)
