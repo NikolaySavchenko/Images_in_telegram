@@ -9,8 +9,8 @@ from secondary_functions import walk_for_files
 from secondary_functions import posting_images
 
 
-def posting_bot(folder_name, token, chat_id, delay_time_sec=14400):
-    Path(folder_name).mkdir(parents=True, exist_ok=True)
+def posting_bot(folder_address, token, chat_id, delay_time_sec=14400):
+    Path(folder_address).mkdir(parents=True, exist_ok=True)
     tele_bot = telegram.Bot(token=token)
     while True:
         images_collection = walk_for_files('images')
@@ -22,11 +22,11 @@ def posting_bot(folder_name, token, chat_id, delay_time_sec=14400):
 if __name__ == '__main__':
     load_dotenv()
     bot_token = os.environ['TG_BOT_TOKEN']
-    parser = argparse.ArgumentParser('Input chat ID, delay time sec, folder name')
+    parser = argparse.ArgumentParser('Input chat ID, delay time sec, folder address')
     parser.add_argument('chat_id')
     parser.add_argument('delay', nargs='?', default=14400)
     parser.add_argument('folder', nargs='?', default='images')
     delay_time = int(parser.parse_args().delay)
     chat_id = parser.parse_args().chat_id
-    folder_name = parser.parse_args().folder
-    posting_bot(folder_name, bot_token, chat_id, delay_time)
+    folder_address = parser.parse_args().folder
+    posting_bot(folder_address, bot_token, chat_id, delay_time)

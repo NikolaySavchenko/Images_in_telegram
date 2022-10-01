@@ -23,14 +23,16 @@ TG_BOT_TOKEN='here is your own TOKEN'
 
 Example for command line:
 
-    $ python '\Images_in_telegram\telegram_bot.py' chat_id 3600
+    $ python '\Images_in_telegram\telegram_bot.py' chat_id 3600 folder_address
 
 Where `chat_id` - ID in telegram chat where Bot will send images. It's required argument
 
 `3600` - time in seconds between publications. The default time is 4 hours.
 
+`folder_address` - folder address where the bot will take the photo. Default `'images'` in the root directory. 
 
-## Also you may use individual scripts:
+
+## To download photos use:
 
 `fetch_spacex_images.py` save images from SpaceX launches. 
 
