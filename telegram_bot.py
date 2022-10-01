@@ -15,8 +15,7 @@ def post_bot(token, chat_id, delay_time_sec=14400):
         images_collection = walk_for_files('images')
         shuffle(images_collection)
         for image in images_collection:
-            with open(Path(f'images/{image}'), 'rb') as file:
-                retry_bot_action(tele_bot, chat_id, file)
+            retry_bot_action(tele_bot, chat_id, image)
             sleep(delay_time_sec)
 
 if __name__ == '__main__':
