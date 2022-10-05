@@ -25,6 +25,6 @@ def walk_for_files(folder_adress):
 
 
 @retry(delay=3, max_delay=30)
-def post_images(bot, chat_id, image):
+def post_image(bot, chat_id, image):
     with open(Path(f'images/{image}'), 'rb') as file:
         bot.send_photo(chat_id=chat_id, photo=file)
